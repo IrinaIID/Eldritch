@@ -10,17 +10,17 @@
 <body>
     <div class="container-choice">
         <div class="ancients-cards">
-            <img src="assets/Ancients/Azathoth.png" alt="Azathoth">
-            <img src="assets/Ancients/Cthulthu.png" alt="Cthulthu">
-            <img src="assets/Ancients/IogSothoth.png" alt="IogSothoth">
-            <img src="assets/Ancients/ShubNiggurath.png" alt="ShubNiggurath">
+            <img src="assets/Ancients/Azathoth.png" alt="Azathoth" class="card-azathoth">
+            <img src="assets/Ancients/Cthulthu.png" alt="Cthulthu" class="card-cthulthu">
+            <img src="assets/Ancients/IogSothoth.png" alt="IogSothoth" class="card-iogSothoth">
+            <img src="assets/Ancients/ShubNiggurath.png" alt="ShubNiggurath" class="card-shubNiggurath">
         </div>
         <div class="complexity">
-            <button>Очень лёгкий</button>
-            <button>Лёгкий</button>
-            <button>Средний</button>
-            <button>Высокий</button>
-            <button>Очень высокий</button>
+            <button class="diff0">Очень лёгкий</button>
+            <button class="diff1">Лёгкий</button>
+            <button class="diff2">Средний</button>
+            <button class="diff3">Высокий</button>
+            <button class="diff4">Очень высокий</button>
         </div>
         <button class="btn-go">Go!</button>
     </div>
@@ -29,7 +29,7 @@
             <div class="stage1">
                 <p>Первая стадия</p>
                 <div class="number-circles">
-                   <div class="number number-green"></div>
+                    <div class="number number-green"></div>
                     <div class="number number-brown"></div>
                     <div class="number number-blue"></div> 
                 </div>  
@@ -51,7 +51,15 @@
                  </div>
             </div>
         </div>
-        <img src="assets/mythicCardBackground.png" alt="cover" class="img-cover">
+        <div class="show-diff">
+            <p>Сложность</p>
+            <div class="choice-diff"></div>
+        </div>
+        <div class="game-place">
+            <img src="assets/mythicCardBackground.png" alt="cover" class="img-cover">
+            <div class="place-for-card"></div>
+        </div>
+        
     </div>
     <script type="module" src="script.js"></script>
 </body>

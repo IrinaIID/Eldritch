@@ -16,7 +16,9 @@ body {
 }
 
 .ancients-cards img {
+    box-sizing: border-box;
     width: 150px;
+    height: 197px;
     margin-right: 20px;
     border-radius: 5px;
 }
@@ -85,6 +87,8 @@ body {
 }
 
 .number {
+    text-align: center;
+    font-size: 32px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -113,9 +117,36 @@ body {
 }
 
 
-.img-cover {
+.show-diff {
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.choice-diff {
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.301);
+}
+
+.img-cover,
+.place-for-card {
     border: 1px solid #fff;
     border-radius: 15px;
     cursor: pointer;
+    display: none;
+}
+
+.place-for-card {
+    cursor:auto;
+    width: 277px;
+    height: 421px;
+    margin-left: 100px;
+    /* background-image: url(assets/MythicCards/blue/blue2.png); */
+}
+
+.game-place {
+    display: flex;
     margin: auto;
 }
