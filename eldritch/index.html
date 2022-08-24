@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codejam-eldritch</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container-choice">
+        <div class="ancients-cards">
+            <img src="assets/Ancients/Azathoth.png" alt="Azathoth" class="card-azathoth">
+            <img src="assets/Ancients/Cthulthu.png" alt="Cthulthu" class="card-cthulthu">
+            <img src="assets/Ancients/IogSothoth.png" alt="IogSothoth" class="card-iogSothoth">
+            <img src="assets/Ancients/ShubNiggurath.png" alt="ShubNiggurath" class="card-shubNiggurath">
+        </div>
+        <div class="complexity">
+            <button class="diff0">Очень лёгкий</button>
+            <button class="diff1">Лёгкий</button>
+            <button class="diff2">Средний</button>
+            <button class="diff3">Высокий</button>
+            <button class="diff4">Очень высокий</button>
+        </div>
+        <button class="btn-go">Go!</button>
+    </div>
+    <div class="container-game">
+        <div class="tracker">
+            <div class="stage1">
+                <p>Первая стадия</p>
+                <div class="number-circles">
+                    <div class="number number-green"></div>
+                    <div class="number number-brown"></div>
+                    <div class="number number-blue"></div> 
+                </div>  
+            </div>
+            <div class="stage2">
+                <p>Вторая стадия</p>
+                <div class="number-circles">
+                    <div class="number number-green"></div>
+                     <div class="number number-brown"></div>
+                     <div class="number number-blue"></div> 
+                 </div>
+            </div>
+            <div class="stage3">
+                <p>Третья стадия</p>
+                <div class="number-circles">
+                    <div class="number number-green"></div>
+                     <div class="number number-brown"></div>
+                     <div class="number number-blue"></div> 
+                 </div>
+            </div>
+        </div>
+        <div class="show-diff">
+            <p>Сложность</p>
+            <div class="choice-diff"></div>
+        </div>
+        <div class="game-place">
+            <img src="assets/mythicCardBackground.png" alt="cover" class="img-cover">
+            <div class="place-for-card"></div>
+        </div>
+        
+    </div>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
