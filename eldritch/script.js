@@ -124,9 +124,10 @@ function go() {
     if( tracker + diff === 2 ){
       imgCover.style.display = 'block';
       imgPlayCard.style.display = 'block';
-
       a = setCards()
     }
+
+   
 }
 
 
@@ -159,7 +160,6 @@ sortColorDiff(cardsDataBlue, blueEasyAll, blueNormalAll, blueHardAll);
 
 
 
-console.log(brownNormalAll)
 
 // diff-0
 
@@ -176,28 +176,32 @@ const shuffle = (array) => {
 
 // set diff 0
 
-function set0Arr(colorEasy, colorNormal, sumColor) {
+function set0Arr(colorEasy, colorNormal, x) {
     let playArr = [];
     let newColorNormal = shuffle(colorNormal);
+    let sumColor = stage1Circles[x].innerHTML + stage2Circles[x].innerHTML + stage3Circles[x].innerHTML;
 
     colorEasy.forEach(elem => {
         playArr.push(elem)
     })
 
-    let length = playArr.length
-
-    if(playArr.length < sumColor) {
-        for(let i = 0; length < sumColor; i++) {
-            playArr.push(newColorNormal[i]);
-            length += 1;
+    if (playArr.length < sumColor) {
+        for (let i = 0; playArr.length < sumColor; i++) {
+            playArr.push(newColorNormal[i])
         }
     }
+
+
+    return shuffle(playArr)
+
+    
 }
 
 function setCardsDiff0() {
-    let greenArr = set0Arr(greenEasyAll, greenNormalAll, sumGreen);
-    let brownArr = set0Arr(brownEasyAll, brownNormalAll, sumBrown);
-    let blueArr = set0Arr(blueEasyAll, blueNormalAll, sumBlue);
+
+    let greenArr = set0Arr(greenEasyAll, greenNormalAll, 0);
+    let brownArr = set0Arr(brownEasyAll, brownNormalAll, 1);
+    let blueArr = set0Arr(blueEasyAll, blueNormalAll, 2);
     return {
         'greenArr': greenArr,
         'brownArr': brownArr,
@@ -230,8 +234,6 @@ function setCardsDiff1() {
     }
 }
 
-console.log(setCardsDiff1())
-
 
 // set diff 2 
 
@@ -261,7 +263,6 @@ function setCardsDiff2() {
     }
 }
 
-console.log(setCardsDiff2())
 
 
 
@@ -289,7 +290,6 @@ function setCardsDiff3() {
     }
 }
 
-console.log(setCardsDiff3())
 
 // set diff 4 
 
@@ -337,9 +337,6 @@ function fillStages(cards) {
     let green = cards.greenArr;
     let brown = cards.brownArr;
     let blue = cards.blueArr;
-
-
-    console.log(brown)
     
     function stages(stageCircles, stage) {
 
@@ -377,32 +374,26 @@ function setCards() {
 
     if (showDiff.innerHTML === 'Очень лёгкий') {
         allCardsForplay = setCardsDiff0()
-        console.log(fillStages(allCardsForplay))
         return fillStages(allCardsForplay)
     }
 
     if (showDiff.innerHTML === 'Лёгкий') {
         allCardsForplay = setCardsDiff1()
-        console.log(fillStages(allCardsForplay))
         return fillStages(allCardsForplay)
     }
 
     if (showDiff.innerHTML === 'Средний') {
         allCardsForplay = setCardsDiff2()
-        console.log(allCardsForplay)
-        console.log(fillStages(allCardsForplay))
         return fillStages(allCardsForplay)
     }
 
     if (showDiff.innerHTML === 'Высокий') {
         allCardsForplay = setCardsDiff3()
-        console.log(fillStages(allCardsForplay))
         return fillStages(allCardsForplay)
     }
 
     if (showDiff.innerHTML === 'Очень высокий') {
         allCardsForplay = setCardsDiff4()
-        console.log(fillStages(allCardsForplay))
         return fillStages(allCardsForplay)
     }
 
@@ -425,8 +416,13 @@ function showCards() {
     let playStage2 = arrPlayCards[1];
     let playStage3 = arrPlayCards[2];
 
+    console.log(a)
+    const blockStage1 = document.querySelector('.stage1');
+    const blockStage2 = document.querySelector('.stage2');
+    const blockStage3 = document.querySelector('.stage3');
 
     if (playStage1.length > 0) {
+            blockStage1.classList.add('stage-active');
             playCard = playStage1.pop()
             let path = `assets/MythicCards/all-cards/${playCard.id}.png`
             imgPlayCard.style.backgroundImage = `url('${path}')`
@@ -435,6 +431,8 @@ function showCards() {
             if (playCard.color === 'blue') {stage1Circles[2].innerHTML -= 1}
 
         } else if (playStage2.length > 0) {
+            blockStage1.classList.remove('stage-active');
+            blockStage2.classList.add('stage-active');
             playCard = playStage2.pop()
             let path = `assets/MythicCards/all-cards/${playCard.id}.png`
             imgPlayCard.style.backgroundImage = `url('${path}')`
@@ -443,6 +441,8 @@ function showCards() {
             if (playCard.color === 'blue') {stage2Circles[2].innerHTML -= 1}
 
         } else if (playStage3.length > 0) {
+            blockStage2.classList.remove('stage-active');
+            blockStage3.classList.add('stage-active');
             playCard = playStage3.pop()
             let path = `assets/MythicCards/all-cards/${playCard.id}.png`
             imgPlayCard.style.backgroundImage = `url('${path}')`
@@ -450,9 +450,14 @@ function showCards() {
             if (playCard.color === 'brown') {stage3Circles[1].innerHTML -= 1}
             if (playCard.color === 'blue') {stage3Circles[2].innerHTML -= 1}
         } else {
-            imgCover.style.display = 'none'; 
+            blockStage3.classList.remove('stage-active');
+            imgCover.style.display = 'none';
+            imgPlayCard.style.backgroundImage = 'none'
+            setTimeout(() => {
+                location.reload()
+            }, 1000); 
+
         }
-    console.log(playStage1)
     }
 
 
