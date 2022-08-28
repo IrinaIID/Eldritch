@@ -89,14 +89,7 @@ function showTracker(card) {
     let sumBlue = stage1Circles[2].innerHTML + stage2Circles[2].innerHTML + stage3Circles[2].innerHTML;
 
 
-
 // difficulty
-
-// const diff0 = document.querySelector('.diff0');
-// const diff1 = document.querySelector('.diff1');
-// const diff2 = document.querySelector('.diff2');
-// const diff3 = document.querySelector('.diff3');
-// const diff4 = document.querySelector('.diff4');
 
 const allComplexity = document.querySelectorAll('.complexity button');
 const showDiff = document.querySelector('.choice-diff');
@@ -107,7 +100,6 @@ allComplexity.forEach(btn => {
         diff = 1;
     })
 })
-
 
 
 // go 
@@ -126,10 +118,7 @@ function go() {
       imgPlayCard.style.display = 'block';
       a = setCards()
     }
-
-   
 }
-
 
 
 // diff-color
@@ -159,10 +148,7 @@ sortColorDiff(cardsDataBrown, brownEasyAll, brownNormalAll, brownHardAll);
 sortColorDiff(cardsDataBlue, blueEasyAll, blueNormalAll, blueHardAll);
 
 
-
-
 // diff-0
-
 
 const shuffle = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -179,7 +165,7 @@ const shuffle = (array) => {
 function set0Arr(colorEasy, colorNormal, x) {
     let playArr = [];
     let newColorNormal = shuffle(colorNormal);
-    let sumColor = stage1Circles[x].innerHTML + stage2Circles[x].innerHTML + stage3Circles[x].innerHTML;
+    let sumColor = +stage1Circles[x].innerHTML + +stage2Circles[x].innerHTML + +stage3Circles[x].innerHTML;
 
     colorEasy.forEach(elem => {
         playArr.push(elem)
@@ -190,11 +176,8 @@ function set0Arr(colorEasy, colorNormal, x) {
             playArr.push(newColorNormal[i])
         }
     }
-
-
-    return shuffle(playArr)
-
     
+    return shuffle(playArr)
 }
 
 function setCardsDiff0() {
@@ -237,7 +220,6 @@ function setCardsDiff1() {
 
 // set diff 2 
 
-
 function set2Arr(colorEasy, colorNormal, colorHard) {
     let playArr = [];
     colorEasy.forEach(elem => {
@@ -262,7 +244,6 @@ function setCardsDiff2() {
         'blueArr': blueArr
     }
 }
-
 
 
 
@@ -293,12 +274,13 @@ function setCardsDiff3() {
 
 // set diff 4 
 
-function set4Arr(colorHard, colorNormal, sumColor) {
+function set4Arr(colorHard, colorNormal, x) {
     const playArr = [];
-    const newColorHard = shuffle(colorHard);
     const newColorNormal = shuffle(colorNormal);
+    let sumColor = +stage1Circles[x].innerHTML + +stage2Circles[x].innerHTML + +stage3Circles[x].innerHTML;
+
     
-    newColorHard.forEach(elem => {
+    colorHard.forEach(elem => {
         playArr.push(elem)
     })
 
@@ -312,9 +294,9 @@ function set4Arr(colorHard, colorNormal, sumColor) {
 }
 
 function setCardsDiff4() {
-    let greenArr = set4Arr(greenHardAll, greenNormalAll, sumGreen);
-    let brownArr = set4Arr(brownHardAll, brownNormalAll, sumBrown);
-    let blueArr = set4Arr(blueHardAll, blueNormalAll, sumBlue);
+    let greenArr = set4Arr(greenHardAll, greenNormalAll, 0);
+    let brownArr = set4Arr(brownHardAll, brownNormalAll, 1);
+    let blueArr = set4Arr(blueHardAll, blueNormalAll, 2);
     return {
         'greenArr': greenArr,
         'brownArr': brownArr,
@@ -323,11 +305,7 @@ function setCardsDiff4() {
 }
 
 
-
-
 // fill stages
-
-
 
 function fillStages(cards) {
     let stage1 = [];
@@ -364,13 +342,8 @@ function fillStages(cards) {
 }
 
 
-
 function setCards() {
     let allCardsForplay;
-
-    // const cardsStage1 = [];
-    // const cardsStage2 = [];
-    // const cardsStage3 = [];
 
     if (showDiff.innerHTML === 'Очень лёгкий') {
         allCardsForplay = setCardsDiff0()
@@ -396,18 +369,12 @@ function setCards() {
         allCardsForplay = setCardsDiff4()
         return fillStages(allCardsForplay)
     }
-
-    // return allCardsForplay;
 }
-
 
 
 // click cards and change 
 
 imgCover.addEventListener('click', showCards);
-
-
-
 
 function showCards() {
     let playCard;
@@ -458,35 +425,4 @@ function showCards() {
             }, 1000); 
 
         }
-    }
-
-
-
-// stage1Circles[0].innerHTML = card.firstStage.greenCards;
-//     stage1Circles[1].innerHTML = card.firstStage.brownCards;
-//     stage1Circles[2].innerHTML = card.firstStage.blueCards;
-
-//     stage2Circles[0].innerHTML = card.secondStage.greenCards;
-//     stage2Circles[1].innerHTML = card.secondStage.brownCards;
-//     stage2Circles[2].innerHTML = card.secondStage.blueCards;
-
-//     stage3Circles[0].innerHTML = card.thirdStage.greenCards;
-//     stage3Circles[1].innerHTML = card.thirdStage.brownCards;
-//     stage3Circles[2].innerHTML = card.thirdStage.blueCards;
-
-
-
-// const btnGo = document.querySelector('.btn-go');
-// const imgCover = document.querySelector('.img-cover');
-// const imgPlayCard = document.querySelector('.place-for-card');
-
-// btnGo.addEventListener('click', go)
-
-// function go() {
-//     if( tracker + diff === 2 ){
-//       imgCover.style.display = 'block';
-//       imgPlayCard.style.display = 'block';
-
-//       return setCards()
-//     }
-// }
+}
